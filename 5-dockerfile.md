@@ -53,17 +53,22 @@ docker build -t <nombre imagen>:<tag> .
 ### Ejecutar el archivo Dockerfile y construir una imagen en la versión 1.0
 No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
-
+docker build -t myapp:1.0 .
 ```
 
 **¿Cuántos pasos se han ejecutado?**
-# RESPONDER 
+
+*Debido al fin de soporte de CentOs:7, fue necesario añadir una instrucción RUN en el Dockerfile original para cambiar los repositorios.*
+
+Se ejecutaron 7 pasos en total (incluyendo la instrucción añadida).
+
 
 ### Inspeccionar la imagen creada
-# COMPLETAR CON UNA CAPTURA
+![Imagen](./img/actividad5_captura_imagen_1.png)
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+Como tal, se ejecutó la misma cantidad de pasos, pero la construcción fue más rápida que la inicial. En el output se muestran las instrucciones RUN como CACHED, y la instrucción COPY se volvió a ejecutar normalmente, debido al cambio realizado. 
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -73,16 +78,22 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 - Instrucción COPY y ADD: Si los archivos copiados no han cambiado, Docker reutiliza la capa de caché correspondiente.
 ![mapeo](img/dockerfile-cache.PNG)
 
-### Crear un contenedor a partir de las imagen creada, mapear todos los puertos
+### Crear un contenedor a partir de la imagen creada, mapear todos los puertos
 ```
-
+docker run -d --name myapache -P myapp:2.0
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
-# COMPLETAR CON LA RESPUESTA
+Al ejecutar `docker ps`, se puede observar que el puerto 80 del contenedor se mapea con el puerto 55000 del host
+```
+> docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED         STATUS         PORTS                   NAMES
+e6f7e15b0abd   myapp:2.0   "apachectl -D FOREGR…"   7 seconds ago   Up 6 seconds   0.0.0.0:55000->80/tcp   myapache
+```
+
 
 **¿Qué es una imagen huérfana?**
-# COMPLETAR CON LA RESPUESTA
+Una imagen huérfana en Docker es aquella que ha quedado sin etiqueta, ya que se ha construido una nueva version con el mismo nombre y etiqueta, lo que provoca que la versión anterior pierda su etiqueta y se convierta en una imagen sin referencia. Se representan con `<none>:<none>`.
 
 ### Identificar imágenes huérfanas
 ```

@@ -1,3 +1,3 @@
-# COMPLETAR  
-Comparando sus conocimientos antes de hacer la práctica con sus conocimientos después de hacer la tarea, explicar los principales aprendizajes logrados para beneficio de su formación profesional.  
-Si solucionó un problema presentado al realizar la práctica también se debe documentar.
+Comparando mis conocimientos iniciales con los adquiridos al finalizar esta práctica, logré comprender a profundidad cómo interpretar y estructurar archivos Dockerfile para empaquetar aplicaciones de manera eficiente. Este aprendizaje es de gran beneficio para mi formación profesional, ya que me permitirá asegurar la portabilidad de los proyectos y evitar que mis compañeros de clase o de equipo de trabajo tengan que instalar dependencias complejas directamente en su sistema operativo principal.
+Por otro lado, mediante la sección de limitación de recursos, pude repasar y afianzar conceptos clave sobre la gestión del hardware.
+Muchas gracias
