@@ -94,6 +94,7 @@ e6f7e15b0abd   myapp:2.0   "apachectl -D FOREGR…"   7 seconds ago   Up 6 secon
 
 
 **¿Qué es una imagen huérfana?**
+
 Una imagen huérfana en Docker es aquella que ha quedado sin etiqueta, ya que se ha construido una nueva version con el mismo nombre y etiqueta, lo que provoca que la versión anterior pierda su etiqueta y se convierta en una imagen sin referencia. Se representan con `<none>:<none>`.
 
 ### Identificar imágenes huérfanas
